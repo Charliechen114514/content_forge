@@ -1,0 +1,51 @@
+# 教程体裁规则：AI 初稿在教程文体上的模板痕迹，作者 2026-09-28 裁决全部按 error 归零。
+# 教程正文只写这一篇的对象与机制；卷名、编号、进度归站点侧目录与状态页。
+
+[[rules]]
+id = "cliche_blacklist"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "命中教程腔套话。这些说法换一个主题照样成立，不承载本篇对象的机制；删掉套话，直接写眼前出现的现象、动作或后果。"
+# 「从四个方面展开」一类先报数再陈列的说法归 01-structure 的 marketing_count，不在此重复。
+patterns = ['你会发现', '你可能会问', '这个问题非常好', '四个核心维度', '血压升高', '真香', '大功告成', '我心里是拒绝', '链接已验证', '对了一半']
+
+[[rules]]
+id = "numbered_h2"
+level = "error"
+check = "existence"
+scope = "heading"
+message = "报数标题被作者否决（2026-09-28 改版裁决：标题不带编号）。标题写这一节真正得到的结果或对象，顺序交给行文；heading 作用域已剥掉 # 前缀，本条锚定标题正文开头的数字。"
+patterns = ['^\d+\s*[.、]']
+
+[[rules]]
+id = "h1_series_prefix"
+level = "error"
+check = "existence"
+scope = "heading"
+message = "系列卷名前缀不进标题（2026-09-28 改版裁决）。标题写文章自己的题目，卷名与编号由站点侧目录承载；frontmatter 块平台解析时整体跳过，本条拦各级标题里的卷名与（新手篇）类分卷标记。"
+patterns = ['现代\s*Qt\s*开发教程', '[（(]\s*(?:新手|进阶|专家|入门|实战)篇\s*[）)]']
+
+[[rules]]
+id = "ritual_separator"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "用重横线当装饰分隔符是模板痕迹。段落之间的过渡靠行文承接；确实要分节就写小节标题，不画线。"
+patterns = ['━{3,}']
+
+[[rules]]
+id = "handwritten_progress"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "卷级进度自述是写作过程泄漏，读者拿到的是成品。删掉报数，直接讲当前这篇的对象；进度信息归路线图状态页。"
+patterns = ['还剩\s*\d+\s*篇', '共\s*\d+\s*篇', '已完成\s*\d+\s*篇', '写到第\s*\d+\s*篇']
+
+[[rules]]
+id = "ascii_quote_prose"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "散文里成对的 ASCII 直引号是英文排版习惯。教程正文引号一律用中文弯引号“”；代码块与行内代码不在本条扫描范围。"
+patterns = ['"[^"\n]*"']

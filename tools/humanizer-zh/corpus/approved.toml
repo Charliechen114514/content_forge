@@ -1,0 +1,13 @@
+# 示例样本库:替换成自己作者的逐字片段。voice_only 表示只证明声音,技术陈述仍需核对。
+
+[[sample]]
+id = "demo-001"
+scene = "mechanism"
+approval = "voice_only"
+text = """咱们拿百万级数据实测了一轮,查询耗时从 2.3 秒降到 0.4 秒,降幅主要来自索引重排。"""
+
+[[sample]]
+id = "demo-002"
+scene = "code_explanation"
+approval = "full"
+text = """这段代码先把指针判空再解引用,顺序不能反:反了的话,空指针会在解引用那一行直接把进程带走。"""

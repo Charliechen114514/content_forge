@@ -1,0 +1,19 @@
+{
+  "lane": "single-editorial",
+  "base": "forge-base",
+  "process": ["five-gates", "mechanical"],
+  "review": ["writing-style"],
+  "voice": "author-tech",
+  "scene": null,
+  "roles": [
+    "master",
+    "writer",
+    "voice-walker",
+    "fidelity-walker",
+    "thread-walker",
+    "reference-walker"
+  ],
+  "role_layer_extras": {
+    "thread-walker": ["process"]
+  }
+}

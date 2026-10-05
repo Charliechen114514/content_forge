@@ -1,0 +1,49 @@
+# ════════════════════════════════════════════════════════════
+# content-forge · .gitignore
+# 对外定位:一个「去 AI 味」的文字加工与发布工具。
+#   公开 = 工具(脚本)+ 方法论(SOP / 文笔档案 / humanizer skill)
+#   私密 = 个人内容(草稿/已发/发文包)+ 状态(排期/登记簿/源路径)+ 备份
+# ════════════════════════════════════════════════════════════
+
+# ── Python(平台脚本纯标准库,缓存仍挡) ──
+__pycache__/
+*.py[cod]
+
+# ── 虚拟环境(平台无需,留作各赛道兜底) ──
+**/.venv/
+venv/
+
+# ── 个人内容 · renwen_waver 原料/草稿/已发(只留目录占位 README) ──
+renwen_waver/notes/*
+!renwen_waver/notes/README.md
+renwen_waver/drafts/*
+!renwen_waver/drafts/README.md
+renwen_waver/published/*
+!renwen_waver/published/README.md
+
+# drafts
+
+# ── 个人内容 + 状态 · post_waver
+#    源软链(content,指向私有仓库)/ 排期与登记簿(state,含本机绝对路径)/ 宣传语 / 公众号里程碑
+#    发文包已迁仓库根 waitings/claude-ready/(2026-09-11 起直接生成于此,git 跟踪,发完删包、历史留 git) ──
+post_waver/content/
+post_waver/.claude/state/
+post_waver/promotions/
+
+# ── 个人决策记录(第二赛道策略,私密;想公开做设计理由就注释掉这行) ──
+
+# ── 备份(含 Claude Code 会话/账号状态) ──
+backups/
+
+# ── 编辑器 / 系统 ──
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# tools/humanizer-zh 已由 submodule 改为 vendored 目录。规则、语料、测试与
+# 上游致谢一并跟随本仓库版本化，不在这里忽略。
+
+# 烘焙产物:按需生成(workchop bake),不入库
+build/

@@ -1,0 +1,139 @@
+# 结构规则：检查文章怎样组织信息，不替作者决定内容。
+
+[[rules]]
+id = "paragraph_without_people"
+level = "error"
+check = "active_person"
+scope = "paragraph"
+message = "作者要求每个散文段落都有人称在场。至少让我、我们、咱们、笔者、您、大家或大伙参与观察、动作、疑问或推导；只补所有格仍需人工退回。"
+patterns = ['(?:我们|咱们|笔者|朋友们|孩子们|大家|大伙|读者|我|你|您)']
+
+[[rules]]
+id = "breathless_sentence"
+level = "error"
+check = "existence"
+scope = "paragraph"
+message = "一句话长时间没有逗号或句号，或者用破折号把另一层解释硬接回来，读起来没有喘气的位置。至少拆成两句，恢复“每一步，都……”一类停顿，并让我们或您参与观察与反应。"
+patterns = ['(?:(?![，,。.!！？?\n]).){36,}[。.!！？?]', '[^，,。.!！？?\n]{16,}——[^，,。.!！？?\n]{12,}']
+
+[[rules]]
+id = "balance_not"
+level = "review"
+check = "existence"
+scope = "prose"
+message = "命中「不是 X，是/而是 Y」等平衡骨架。走查员必须完整引用原句，显著标记「平衡句式候选｜主控二审」，说明 X 是否在前文真实出现，再交主控决定保留或重写；不得自行静默放行。"
+patterns = ['不是[^。；;\n]{1,30}[，,]\s*(?:而?就?是)', '不在[^。；;\n]{1,30}[，,]\s*而在', '并非[^。；;\n]{1,30}[，,]\s*而是', '与其说[^。；;\n]{1,30}[，,]\s*不如说']
+
+[[rules]]
+id = "not_only"
+level = "review"
+check = "existence"
+scope = "prose"
+message = "命中「不仅 X，而且/还/更 Y」一类平衡骨架。走查员必须完整引用原句，显著标记「平衡句式候选｜主控二审」，核对两半是否真有递进，再交主控决定保留或重写。"
+patterns = ['不仅仅', '不仅[^。\n]{0,24}(?:而且|还|更)']
+
+[[rules]]
+id = "stitch_aside"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "疑似用“顺手/顺便/顺带”缝合孤立信息。指出它承接上文的具体对象，或者让它自然另起一段。"
+patterns = ['^(?:顺手|顺便|顺带)', '顺手再|顺手一提|顺手记一|顺便一提|顺便提一句|顺便再说|顺带一提|顺带说一?句|顺带再说']
+
+[[rules]]
+id = "course_meta"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "疑似课程编排旁白。当前理解没有因此增加，就等真正再次用到时再回指。"
+patterns = ['伏笔[^。！？\n]{0,16}埋', '种子[^。！？\n]{0,16}埋', '先按下(?:不表|这个|此事)?', '留一个?话头', '后面再(?:揭|展开|细说)', '第一次落到实处', '第一现场', '纪律[^。！？\n]{0,12}(?:落到实处|兑现)']
+
+[[rules]]
+id = "marketing_enum"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "疑似营销号式报数。没有步骤或检索价值时，沿事件、因果或理解过程写成正文。"
+patterns = ['^(?:\*\*)?(?:其[一二三四五六七八九十]|第[一二三四五六七八九十]+(?:层|点|条|个))(?:\*\*)?[，,、:：]']
+
+[[rules]]
+id = "marketing_count"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "疑似先预告数量再陈列观点。数字不承载顺序或检索价值时，直接进入眼前的问题。"
+patterns = ['(?:能|可以)?数出[两三四]条', '[两三四]条(?:疼|痛点|问题|理由|结论)', '读出[两三四]层', '^[^#\n]{0,12}[两三四]个?(?:要点|件事|方面|块)']
+
+[[rules]]
+id = "template_question"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "疑似可套在任何主题前的万能反问。换成当前场景独有的现象、后果或疑问；加语气词没有用。"
+patterns = ['(?:不这样做|不这么做)[，,]?会怎样[?？]', '忘了[^。！？\n]{0,16}会怎样[?？]', '为什么(?:还)?需要(?:它|这个)[?？]']
+
+[[rules]]
+id = "enum_crowded"
+level = "error"
+check = "existence"
+scope = "paragraph"
+message = "同一段塞入多个“第X条/第X个”。真要分项就拆开；属于同一过程则按因果关系写。"
+patterns = ['第[一二三四五六七八九十]{1,3}(?:条|个|点)[^。！？\n]{0,12}[，,、:].*第[一二三四五六七八九十]{1,3}(?:条|个|点)[^。！？\n]{0,12}[，,、:]']
+
+[[rules]]
+id = "label_wall"
+level = "error"
+check = "existence"
+scope = "list_item"
+message = "疑似粗体标签墙。参数表和真正的对照可以保留，普通论述不要包装成产品清单。"
+patterns = ['^\*\*[^*：:]{1,18}[：:]\*\*']
+
+[[rules]]
+id = "num_routine_title"
+level = "error"
+check = "existence"
+scope = "heading"
+message = "标题只写“第X步”没有提供内容。改成这一步真正要得到的结果。"
+patterns = ['^第[一二三四五六七八九十]+步[：:]']
+
+[[rules]]
+id = "dash_after_comma"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "破折号后面直接跟逗号是病句。要么去掉破折号让逗号承担停顿，要么让破折号引出完整的另一层意思。"
+patterns = ['——[，,]']
+
+[[rules]]
+id = "dash_crowd"
+level = "review"
+check = "occurrence"
+scope = "paragraph"
+limit = 2
+message = "同一段破折号超过两处。走查员必须完整引用该段，标记「破折号堆积候选｜主控二审」，说明每一处是否真在引出另一层意思，再交主控决定保留或改写；不得自行静默放行。"
+patterns = ['——']
+
+[[rules]]
+id = "semicolon_prose"
+level = "review"
+check = "occurrence"
+scope = "document"
+limit = 1
+message = "分号在散文中出现超过一处。作者的成稿几乎不用分号串联散文子句。走查员必须完整引用原句，标记「分号串联候选｜主控二审」，说明拆成两句是否更自然，再交主控决定保留或改写。"
+patterns = ['；']
+
+[[rules]]
+id = "metaphor_pronoun"
+level = "review"
+check = "existence"
+scope = "prose"
+message = "比喻被当成回指代称（那扇门、这笔账、这台机器）。走查员必须核对：这个比喻与被喻对象的绑定是否在本句之前已经同场建立（本章或读者刚读过的地方）；未建立即读者要现场自造映射，按阻断项立案退回改写，不得静默放行。"
+patterns = ['[这那一]扇门', '[这那一]笔账', '[这那一]台机器']
+
+[[rules]]
+id = "readme_tree"
+level = "error"
+check = "occurrence"
+scope = "code_block"
+message = "目录树不被接受，任何程度上的。沿路径的阅读用正文带着走，一条条路径写进句子里。"
+patterns = ['(?:├──|└──|│\s+├──|│\s+└──)']

@@ -1,0 +1,693 @@
+# 每个曾经误伤作者真迹、或曾从 GLM 稿里漏掉的规则，都应在这里留下样本。
+
+[[cases]]
+name = "personal-I-is-voice"
+clean = true
+text = """
+我最早学 C++ 的时候，当然不知道 ABI 是什么。后来咱们真遇上过一次链接错误，咱们今天就从那次错误看起。
+"""
+
+[[cases]]
+name = "pit-is-a-hard-ban"
+expect = ["banned_pit"]
+text = "这里有一个非常容易踩的坑，咱们先把它记下来。"
+
+[[cases]]
+name = "ugly-talk-is-a-hard-ban"
+expect = ["banned_ugly_talk"]
+text = "咱们先说一句丑话，这个接口没有任何兼容保证。"
+
+[[cases]]
+name = "say-first-is-a-hard-ban"
+expect = ["banned_discourse_staging"]
+text = "咱们先说一下这里的调用顺序。"
+
+[[cases]]
+name = "single-first-character-is-a-hard-ban"
+expect = ["banned_first"]
+text = "咱们先检查目标文件。"
+
+[[cases]]
+name = "chat-first-is-a-hard-ban"
+expect = ["banned_discourse_staging"]
+text = "咱们先聊这个接口为什么存在。"
+
+[[cases]]
+name = "conclusion-is-a-hard-ban"
+expect = ["banned_discourse_staging"]
+text = "咱们直接看结论。"
+
+[[cases]]
+name = "set-rules-is-a-hard-ban"
+expect = ["banned_set_rules"]
+text = "咱们这一节先立规矩。"
+
+[[cases]]
+name = "rules-word-cannot-evade-the-combination-ban"
+expect = ["banned_rules_word"]
+text = "这一章的规矩从标准库说起。"
+
+[[cases]]
+name = "wall-metaphor-is-a-hard-ban"
+expect = ["banned_wall"]
+text = "咱们拿 vector 撞一次墙，看看它欠哪些符号。"
+
+[[cases]]
+name = "quantified-wall-is-a-hard-ban"
+expect = ["banned_wall"]
+text = "您一回车，一堵墙。"
+
+[[cases]]
+name = "experiment-without-wall-remains-clean"
+clean = true
+text = "咱们拿 vector 做个十秒钟的实验，看看它到底欠了谁的名字。"
+
+[[cases]]
+name = "contract-word-is-a-hard-ban"
+expect = ["banned_contract"]
+text = "两个世界看的是同一份契约。"
+
+[[cases]]
+name = "door-metaphor-is-a-hard-ban"
+expect = ["banned_door"]
+text = "这道门只认 GCC：编译器是 GNU 才查，版本低就拦。"
+
+[[cases]]
+name = "door-metaphor-plain-rewrite-remains-clean"
+clean = true
+text = "现在我们的构建专门检查 GCC 编译器，如果检查的时候，构建系统发现咱们的编译器版本低，咱们就拦截。"
+
+[[cases]]
+name = "fake-article-is-a-hard-ban"
+expect = ["fake_article"]
+text = "命令里那四面旗，是把代码编进内核时的标准姿势。"
+
+[[cases]]
+name = "fake-article-verb-rewrite-remains-clean"
+clean = true
+text = "咱们往命令里打四面旗，往后编内核咱们就摆这副姿势。"
+
+[[cases]]
+name = "bare-zhege-nage-are-released"
+clean = true
+text = "咱们把 `memcpy` 记下来，这个咱们放到下一节再说。编译器给的警告也一样，那个咱们当场就处理。"
+
+[[cases]]
+name = "all-present-is-a-hard-ban"
+expect = ["banned_all_present"]
+text = "咱们眼前的符号一个不少。"
+
+[[cases]]
+name = "all-present-rewrite-remains-clean"
+clean = true
+text = "咱们眼前的符号一个都没有少。"
+
+[[cases]]
+name = "semicolon-is-a-hard-ban"
+expect = ["banned_semicolon"]
+text = "咱们看输出；咱们数它欠下的名字。"
+
+[[cases]]
+name = "corner-quotes-are-a-hard-ban"
+expect = ["banned_corner_quotes"]
+text = "咱们把这一段私下叫作「第二阶段」。"
+
+[[cases]]
+name = "plain-description-needs-no-corner-quotes"
+clean = true
+text = "咱们进入第二阶段，接着咱们把页表装好。"
+
+[[cases]]
+name = "corner-quotes-inside-code-are-out-of-scope"
+clean = true
+text = """
+咱们保留程序真实输出：
+
+```text
+「device ready」
+```
+"""
+
+[[cases]]
+name = "corner-quotes-inside-table-are-rejected"
+expect = ["banned_corner_quotes"]
+text = """
+咱们把术语列成表格：
+
+| 名称 | 含义 |
+| --- | --- |
+| 「第二阶段」 | 装页表 |
+"""
+
+[[cases]]
+name = "ledger-word-is-a-hard-ban"
+expect = ["ledger_family"]
+text = "这笔账咱们记着。"
+
+[[cases]]
+name = "clause-without-warmth-is-rejected"
+expect = ["clause_without_warmth"]
+text = "咱们拿起 nm，逐字翻看目标文件里每个符号。"
+
+[[cases]]
+name = "warm-clause-passes"
+clean = true
+text = "咱们拿起 nm，翻看的目标文件一字不差。"
+
+[[cases]]
+name = "transition-clause-with-connective-passes"
+clean = true
+text = "不过名单里有一个头，欠的名字也没躲开，现在咱们说它。"
+
+[[cases]]
+name = "le-particle-clause-passes"
+clean = true
+text = "名字还上了，咱们也就能收工了。"
+
+[[cases]]
+name = "exclamatory-particle-burst-capped"
+expect = ["exclamatory_particle_cap"]
+text = "多自然啊。可它骗人啊。三次出场就是三个数啊。真悬呀。"
+
+[[cases]]
+name = "single-exclamatory-particle-passes"
+clean = true
+text = "多自然啊，咱们头一回见。"
+
+[[cases]]
+name = "biji-counts-as-person"
+clean = true
+text = "笔者当年亲手补过这个符号，您眼下看到的就是那次的收尾。"
+
+[[cases]]
+name = "compressed-shared-history"
+expect = ["compressed_shared_history"]
+text = "这几项咱们已经逐条讲过。"
+
+[[cases]]
+name = "flat-copy-command"
+expect = ["copy_command_flat"]
+text = "这里咱们照抄前面的命令。"
+
+[[cases]]
+name = "ai-spotlight-announcement"
+expect = ["ai_spotlight"]
+text = "关键在于，咱们必须关闭异常。"
+
+[[cases]]
+name = "stare-is-a-hard-ban"
+expect = ["banned_stare"]
+text = "咱们先盯住这个返回值。"
+
+[[cases]]
+name = "coined-continue-use-is-rejected"
+expect = ["coined_continue_use"]
+text = "链条中间的临时对象，咱们由此可以续着用。"
+
+[[cases]]
+name = "continue-use-is-written-plainly"
+clean = true
+text = "因此我们可以继续使用同一条链条中间的中间对象。"
+
+[[cases]]
+name = "stock-teacher-phrasing"
+expect = ["stock_teacher_phrasing"]
+text = "说白了，咱们只要记住这一条。"
+
+[[cases]]
+name = "preferred-pauses-remain-clean"
+clean = true
+text = "您无需想得复杂，其实，就是咱们把同一个值复制过来。"
+
+[[cases]]
+name = "breathless-dash-explanation"
+expect = ["breathless_sentence", "paragraph_without_people"]
+text = "这里面的字符串拼接产生了大量临时对象——每做一次加法都会创建一个新的临时字符串。"
+
+[[cases]]
+name = "breathing-version-remains-clean"
+clean = true
+text = "这里面的字符串拼接，每走一步都会产生一个新的临时对象！加法一多，您看它们马上就堆起来了。您想想这得多吓人！"
+
+[[cases]]
+name = "paragraph-without-people-is-rejected"
+expect = ["paragraph_without_people"]
+text = "编译器会在返回以前检查栈保护值。"
+
+[[cases]]
+name = "paragraph-with-people-passes-presence-gate"
+forbid = ["paragraph_without_people"]
+text = "咱们会在函数返回以前，看见编译器检查这个栈保护值。"
+
+[[cases]]
+name = "bare-realhw-is-rejected"
+expect = ["banned_bare_hardware"]
+text = "咱们就在真机上把这一版固件跑一遍。"
+
+[[cases]]
+name = "real-board-phrasing-passes"
+clean = true
+text = "咱们还要把这一版固件放到真正的开发板上跑一遍。"
+
+[[cases]]
+name = "host-machine-is-rejected"
+expect = ["banned_host_machine"]
+text = "咱们就在宿主机上把这一版程序编译运行。"
+
+[[cases]]
+name = "host-computer-phrasing-passes"
+clean = true
+text = "这套测试在咱们开发它的电脑上照样跑得飞快。"
+
+[[cases]]
+name = "possessive-pronoun-cannot-cheat-gate"
+expect = ["paragraph_without_people"]
+text = "咱们的编译器会在函数返回以前检查这个栈保护值。"
+
+[[cases]]
+name = "real-aside-may-use-blockquote"
+clean = true
+text = """
+咱们沿着链接错误继续排查。
+
+> 这一段只补充咱们当前平台的表现，跳过也不影响后面的推导。
+"""
+
+[[cases]]
+name = "honestly-opener-is-a-hard-ban"
+expect = ["banned_honestly"]
+text = "说实话，这个接口没有任何兼容保证。"
+
+[[cases]]
+name = "say-po-is-a-hard-ban"
+expect = ["banned_say_through"]
+text = "三件事的次序，咱们顺便说破。"
+
+[[cases]]
+name = "say-tou-is-a-hard-ban"
+expect = ["banned_say_through"]
+text = "咱们把这里的原因说透。"
+
+[[cases]]
+name = "jiang-tou-is-a-hard-ban"
+expect = ["banned_house_terms"]
+text = "咱们把这里的原因讲透。"
+
+[[cases]]
+name = "bai-kai-is-a-hard-ban"
+expect = ["banned_pull_apart"]
+text = "这三行字意味着什么，咱们掰开数。"
+
+[[cases]]
+name = "chai-kai-is-a-hard-ban"
+expect = ["banned_pull_apart"]
+text = "这三个问题，咱们拆开来看。"
+
+[[cases]]
+name = "look-at-questions-one-by-one-is-clean"
+clean = true
+text = "咱们逐个看看我们眼前的三个问题。"
+
+[[cases]]
+name = "explain-clearly-is-the-author-wording"
+clean = true
+text = "这里为什么这么安排，咱们讲解明白。"
+
+[[cases]]
+name = "clan-word-is-a-hard-ban"
+expect = ["banned_clan_word"]
+text = "咱们再看 `-Wswitch` 一族的警告。"
+
+[[cases]]
+name = "plain-classification-replaces-clan-word"
+clean = true
+text = "咱们再看 `-Wswitch` 这一类警告。"
+
+[[cases]]
+name = "suppress-noise-is-a-hard-ban"
+expect = ["banned_suppress_noise"]
+text = "咱们把无关细节删掉，用短句压制噪声。"
+
+[[cases]]
+name = "forceful-abstract-collocation-needs-review"
+expect = ["abstract_force_collocation"]
+text = "咱们不能让这层包装吞掉语义。"
+
+[[cases]]
+name = "measurable-noise-reduction-remains-clean"
+clean = true
+text = "咱们把示波器带宽限制在 20 MHz，测得的噪声也降下来了。"
+
+[[cases]]
+name = "mouth-words-are-not-a-crime"
+clean = true
+text = """
+我头一回看到这些输出的时候也有点懵。好在咱们眼前的符号一个都没有少，咱们看看是谁引用了它。
+"""
+
+[[cases]]
+name = "real-contrast"
+clean = true
+text = """
+咱们要注意，`-ffreestanding` 取消的是标准保证，而不是把所有 hosted 头文件一律禁掉。
+"""
+
+[[cases]]
+name = "not-at-but-at-balance-needs-review"
+expect = ["balance_not"]
+text = "咱们把话说直接一点，问题其实不在快不快，而在还需不需要算。"
+
+[[cases]]
+name = "code-is-out-of-scope"
+clean = true
+text = """
+咱们用这段脚本复现输出：
+
+```text
+此外 → 铁律 → 综上所述
+```
+"""
+
+[[cases]]
+name = "actual-list-is-allowed"
+clean = true
+text = """
+咱们编译前准备三个文件：
+
+- `main.cpp`
+- `result.hpp`
+- `CMakeLists.txt`
+"""
+
+[[cases]]
+name = "ordinal-inside-sentence-is-not-an-enum-label"
+forbid = ["marketing_enum"]
+text = "第二个极端，是现在大量出现的手搓 C 库。"
+
+[[cases]]
+name = "lived-recursion-warning-is-allowed"
+clean = true
+text = """
+而另一种，咱们要拉高警惕，因为大家入门的时候都写过递归。递归的确是个好东西，大问题能拆成小的问题，小的问题再拆到没问题。
+
+比如说咱们算阶乘一路递归到 `n = 100000`，每一层的函数调用，都要疯狂地消耗栈帧空间。这样的操作，很快就会把咱们的栈吃光。
+"""
+
+[[cases]]
+name = "real-rules-may-be-numbered"
+clean = true
+text = """
+第一关咱们看的是成员本身的对齐。咱们拿 `Tiny` 排一遍。
+
+第二关是结构体末尾的填充。咱们把成员顺序倒过来以后，刚才中间的三个空位跑到了尾巴上。
+
+第三关咱们再把已经算过的 `Flip` 放进 `Outer`，看看它作为成员的时候排在哪儿。
+"""
+
+[[cases]]
+name = "fake-balance"
+expect = ["balance_not"]
+text = "这不是一次普通的编译，而是一场边界保卫战。"
+
+[[cases]]
+name = "marketing-count-and-enum"
+expect = ["marketing_count", "marketing_enum"]
+text = """
+疼过的人能数出三条：
+
+其一，歧义。返回值身兼两职。
+"""
+
+[[cases]]
+name = "universal-question"
+expect = ["template_question"]
+text = "不这样做，会怎样？"
+
+[[cases]]
+name = "label-wall"
+expect = ["label_wall"]
+text = "- **性能：** 一次调用只做一次分配。"
+
+[[cases]]
+name = "crowded-paragraph"
+expect = ["enum_crowded"]
+text = "第一个问题，返回值有歧义。第二个问题，错误的名字丢了。"
+
+[[cases]]
+name = "course-checklist-voice"
+expect = ["course_meta"]
+text = "这条库纪律在这里第一次落到实处。"
+
+[[cases]]
+name = "readme-tree"
+expect = ["readme_tree"]
+text = """
+```text
+root/
+├── a
+├── b
+├── c
+├── d
+├── e
+├── f
+└── g
+```
+"""
+
+[[cases]]
+name = "even-a-single-tree-line-is-rejected"
+expect = ["readme_tree"]
+text = """
+```text
+root/
+└── a
+```
+"""
+
+# 2026-09-27 站 01 作者验声抓到的真实案例:「站 00 磨」读者无映射(编号黑话漏网)。
+[[cases]]
+name = "station-number-is-internal-jargon"
+expect = ["internal_station_number"]
+text = "图的是站 00 磨出来的那套东西,终于能跟着咱们进最底层。"
+
+[[cases]]
+name = "station-number-in-inline-code-is-internal-jargon"
+expect = ["internal_station_number"]
+text = "咱们会在站 `04` 接着处理这件事。"
+
+[[cases]]
+name = "station-word-without-number-is-voice"
+clean = true
+text = "咱们往后走到用得上的站点再聊。下一站的活,咱们到时候接着干。"
+
+[[cases]]
+name = "opaque-content-code-in-inline-code-is-rejected"
+expect = ["opaque_content_reference"]
+text = "正文 `001` 里咱们已经跑过一次 QEMU。"
+
+[[cases]]
+name = "opaque-content-code-list-is-rejected"
+expect = ["opaque_content_reference"]
+text = "咱们这里只补够读懂正文 001/004 的最小汇编。"
+
+[[cases]]
+name = "content-reference-with-title-is-readable"
+clean = true
+text = "咱们在[实模式引导](../book/01-boot/001/)里已经跑过一次 QEMU。"
+
+[[cases]]
+name = "numbered-content-reference-with-title-is-readable"
+clean = true
+text = "咱们在正文 [001 · 实模式引导](../book/01-boot/001/)里已经跑过一次 QEMU。"
+
+[[cases]]
+name = "ne-cannot-warm-a-dangling-topic"
+expect = ["clause_without_warmth"]
+text = "注册呢,咱们在程序开跑以前就办完了。"
+
+[[cases]]
+name = "real-question-may-keep-one-ne"
+clean = true
+text = "咱们明明关掉异常了,这个符号怎么还在呢?"
+
+[[cases]]
+name = "ne-patches-are-capped-per-paragraph"
+expect = ["patched_ne_density"]
+text = "咱们看注册呢,调用呢,结果呢,每一步都像贴了一层语气词。"
+
+[[cases]]
+name = "person-must-explain-is-a-hard-ban"
+expect = ["banned_person_must_explain"]
+text = "边界咱们也得说清：类型它只认声明的，数据流它是不追的。"
+
+[[cases]]
+name = "shared-history-as-note-is-a-hard-ban"
+expect = ["compressed_shared_history"]
+text = "它的状态是“有效但未指定”——这是上一章给过的原话。"
+
+[[cases]]
+name = "quoted-speech-is-exempt-from-warmth"
+clean = true
+text = "上一章咱们就强调了“被移动过的那个对象是有效的，但并未指定”，这回咱们亲眼看它落地。"
+
+# 2026-09-28 教程体裁规则（04-tutorial）正反样本。
+[[cases]]
+name = "cliche-you-will-find-is-a-hard-ban"
+expect = ["cliche_blacklist"]
+text = "配置写好以后你会发现，窗口一下子就亮了。"
+
+[[cases]]
+name = "cliche-plain-observation-remains-clean"
+clean = true
+text = "配置写好以后咱们一跑，窗口一下子就亮了。"
+
+[[cases]]
+name = "numbered-heading-is-a-hard-ban"
+expect = ["numbered_h2"]
+text = """
+## 1. 安装开发环境
+
+咱们把工具链装好。
+"""
+
+[[cases]]
+name = "titled-heading-remains-clean"
+clean = true
+text = """
+## 安装开发环境
+
+咱们把工具链装好。
+"""
+
+[[cases]]
+name = "series-prefix-in-title-is-a-hard-ban"
+expect = ["h1_series_prefix"]
+text = """
+# 现代Qt开发教程（新手篇）1.1——信号与槽
+
+咱们从按钮的点击看起。
+"""
+
+[[cases]]
+name = "plain-article-title-remains-clean"
+clean = true
+text = """
+# 信号与槽：按钮点击之后发生了什么
+
+咱们从按钮的点击看起。
+"""
+
+[[cases]]
+name = "ritual-heavy-rule-is-a-hard-ban"
+expect = ["ritual_separator"]
+text = """
+咱们装好了工具链。
+
+━━━━━━━━
+
+接下来咱们跑第一个程序。
+"""
+
+[[cases]]
+name = "plain-paragraph-transition-remains-clean"
+clean = true
+text = """
+咱们装好了工具链。
+
+接下来咱们跑第一个程序。
+"""
+
+[[cases]]
+name = "handwritten-volume-progress-is-a-hard-ban"
+expect = ["handwritten_progress"]
+text = "本卷还剩 5 篇没有动笔，咱们按顺序补。"
+
+[[cases]]
+name = "topic-forward-sentence-remains-clean"
+clean = true
+text = "本卷剩下的话题还很多，咱们一篇一篇慢慢写。"
+
+[[cases]]
+name = "ascii-quote-pair-in-prose-is-a-hard-ban"
+expect = ["ascii_quote_prose"]
+text = """
+按钮的文字是"Click me"，咱们照着点了一下。
+"""
+
+[[cases]]
+name = "curly-quotes-in-prose-remain-clean"
+clean = true
+text = """
+按钮的文字是“Click me”，咱们照着点了一下。
+"""
+
+[[cases]]
+name = "ascii-quotes-inside-inline-code-are-out-of-scope"
+clean = true
+text = """
+咱们照着 `tr("Start")` 的样子写调用。
+"""
+
+[[cases]]
+name = "spit-is-a-hard-ban-give-data"
+expect = ["banned_spit"]
+text = "再请 BIOS 把内存图谱吐出来、咱们存好。"
+
+[[cases]]
+name = "spit-is-a-hard-ban-one-at-a-time"
+expect = ["banned_spit"]
+text = "偏偏 E820 一次只吐一条,咱们想拿全图,就得一句一句地问。"
+
+[[cases]]
+name = "spit-clean-author-replacement"
+clean = true
+text = "咱们要的也不是一个光秃秃的数,咱们要的是一张完整的图:哪一段能用、哪一段碰不得,一段一行地排开。"
+
+[[cases]]
+name = "nail-is-a-hard-ban-map-done"
+expect = ["banned_nail"]
+text = "地图钉好了,咱们这就按图搬家——头一位:栈。"
+
+[[cases]]
+name = "nail-is-a-hard-ban-assert-verbs"
+expect = ["banned_nail"]
+text = "五条钉布局、一条钉存档总大小、十条钉映射,十六条断言全跟结构住在了 e820.hpp 里。"
+
+[[cases]]
+name = "nail-clean-author-replacement"
+clean = true
+text = "咱们数一数:五条确定布局、一条确定存档总大小、十条确定映射,十六条断言全跟结构住在了 `e820.hpp` 里。"
+
+[[cases]]
+name = "dash-followed-by-comma-is-an-error"
+expect = ["dash_after_comma"]
+text = "咱们把这行读出来——，正好是十六位的世界。"
+
+[[cases]]
+name = "dash-pair-used-well-remains-clean"
+clean = true
+text = """
+咱们把这行读出来——正好是十六位的世界——然后接着问下一条。
+"""
+
+[[cases]]
+name = "three-dashes-in-one-paragraph-ask-for-review"
+expect = ["dash_crowd"]
+text = "咱们先看栈——它在长——也在缩——一段一段挪。"
+
+[[cases]]
+name = "two-semicolons-in-prose-ask-for-review"
+expect = ["semicolon_prose"]
+text = """
+咱们先看栈；栈的顶在哪，SP 说了算；底就压在 0x7c00 下面。
+"""
+
+[[cases]]
+name = "door-metaphor-as-bare-anaphor-ask-for-review"
+expect = ["metaphor_pronoun"]
+text = "标准库的 offsetof 住在 <cstddef> 里，那扇门在 -m16 的世界拉不开。"
+
+[[cases]]
+name = "established-metaphor-still-gets-listed-for-review"
+expect = ["metaphor_pronoun"]
+text = "咱们先把门打开——引用这个头文件就是推开那扇门——再看里面的 offsetof。"

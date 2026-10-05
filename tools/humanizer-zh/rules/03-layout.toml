@@ -1,0 +1,49 @@
+# 版式与写作过程泄漏。
+
+[[rules]]
+id = "arrow_prose"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "正文用箭头串流程像提纲。改成能读出关系的完整句；代码和输出中的箭头不会扫描。"
+patterns = ['→']
+
+[[rules]]
+id = "summary_label"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "疑似标签式收束。删掉“一句话定位/总结”，直接说结论。"
+patterns = ['一句话(?:定位|总结|概括|陈述)']
+
+[[rules]]
+id = "stage_num"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "裸“阶段 N”不能帮助理解。写出那一程实际在做什么；目录和状态页可人工放行。"
+patterns = ['阶段\s*\d']
+
+[[rules]]
+id = "self_grade"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "不要替自己的文章评定含金量。价值交给事实和读者判断。"
+patterns = ['最(?:密|有料|硬核|重要)的(?:一)?(?:篇|部分)', '干货满满', '诚意满满', '毫无保留']
+
+[[rules]]
+id = "ghost_review"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "疑似以旁观者口吻点评自己的代码。自己的取舍直接说明；第三方原始注释可以放行。"
+patterns = ['注释(?:自己)?(?:招了|写了|说着|承认)', '注释很诚实', '[，,]诚实[。.]']
+
+[[rules]]
+id = "editorial_meta"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "写作分工指令泄漏进正文。换成读者能直接使用的信息。"
+patterns = ['互链不重', '不重教', '不重抄']

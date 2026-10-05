@@ -1,0 +1,419 @@
+# 用词规则：只收集经过作者确认、且机械命中有价值的模式。
+
+[[rules]]
+id = "banned_pit"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "作者已将“坑”及其组合词设为硬禁词。正文出现即退回，不做语境放行；直接写具体的错误、风险、误判或后果。"
+patterns = ['坑']
+
+[[rules]]
+id = "banned_ugly_talk"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "“丑话”“先说句丑话”“丑话说在前面”不属于作者声音。命中即退回；直接进入具体事实、限制或后果。"
+patterns = ['丑话']
+
+[[rules]]
+id = "banned_discourse_staging"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "“先说”“先聊”“先说结论”和“结论”都是作者确认的 AI 词。命中即退回；直接进入此刻要讲的事实、动作或结果。"
+patterns = ['先说', '先聊', '结论']
+
+[[rules]]
+id = "banned_first"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "单字“先”是作者确认的强吸引子，正文任何位置出现都直接退回，不接受顺序语境申辩。改写实际动作与承接关系。"
+patterns = ['先']
+
+[[rules]]
+id = "banned_rules_word"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "“规矩”本身也不属于作者用词。不能把“先立规矩”删成“规矩”来躲过组合词检查；需要规范时写“规范”，其余场景直接写实际限制、动作或检查。"
+patterns = ['规矩']
+
+[[rules]]
+id = "banned_set_rules"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "“立规矩”是作者确认的硬禁组合。命中即退回，不接受语境申辩；也不能仅删成“规矩”，必须重写它原本承担的动作。"
+patterns = ['立规矩']
+
+[[rules]]
+id = "banned_wall"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "「撞墙」「撞一次墙」「一堵墙」「一面墙」一类墙比喻不属于作者说法。命中即退回；实验直接写做什么、看到什么报错。"
+patterns = ['撞一次墙', '撞[了上]?墙', '一.{0,2}墙']
+
+[[rules]]
+id = "banned_bump"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "「撞上/撞见/撞了/撞过」这一类说法是 AI 高频腔,作者已点名禁用(2026-09-27)。命中即退回;遇到、遇上、读到、冒出来,直接写事实。"
+patterns = ['撞[上过见了]', '撞法', '撞的是', '会撞']
+
+[[rules]]
+id = "banned_clan_word"
+level = "error"
+check = "existence"
+scope = "reader_visible"
+message = "「一族」是作者确认的 AI 词汇。命中即退回；按实际对象写成「一类」「这一类」「这些函数/选项/警告」，不要用族群比喻替代分类。"
+patterns = ['一族']
+
+[[rules]]
+id = "banned_suppress_noise"
+level = "error"
+check = "existence"
+scope = "reader_visible"
+message = "「压制噪声」是作者确认的 AI 动宾组合。命中即退回；写清噪声怎样减少，例如滤除、衰减、降低测量带宽，或者直接删掉空泛修辞。"
+patterns = ['压制噪声']
+
+[[rules]]
+id = "abstract_force_collocation"
+level = "review"
+check = "existence"
+scope = "reader_visible"
+message = "命中疑似 AI 的「用力动词 + 抽象名词」组合。走查员必须完整引用原句，标记「抽象动宾组合候选｜主控二审」，判断动词是否对应可观察机制；不能只凭气势替代具体动作，也不能由走查员静默放行。"
+patterns = ['(?:压制|吞掉|吞没|击穿|撕开|抹平|拉满|释放|挤压)(?:了|掉|住)?(?:信息|语义|叙事|表达|上下文|复杂度|风险|分歧|不确定性|差异|边界|价值|潜力)']
+
+[[rules]]
+id = "banned_door"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "「这道门/一道门/门禁」一类门比喻不属于作者说法。命中即退回；检查就是检查，直接写谁检查什么、拦下什么。"
+patterns = ['[这那一]道门', '门禁']
+
+[[rules]]
+id = "banned_contract"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "「契约」是作者确认的 AI 词汇。命中即退回；说的是共享的声明就写声明，说的是约定就写明约定的具体内容。"
+patterns = ['契约']
+
+[[rules]]
+id = "banned_honestly"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "「说实话」是作者确认的 AI 词汇。命中即退回；删掉它，直接说看到的东西。"
+patterns = ['说实话']
+
+[[rules]]
+id = "banned_say_through"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "「说破」「说透」是作者确认的 AI 词语。命中即退回，按实际语义改成「讲解明白」，并把谁向谁讲什么写顺。"
+patterns = ['说破', '说透']
+
+[[rules]]
+id = "banned_person_must_explain"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "「咱们也得说清」「咱们也得强调」一类「人称+也得+元话语动词」是英文转场句的直译。命中即退回；把限制或边界写成事实句，配「不过」等承接进入，让人称参与真实的观察或动作。"
+patterns = ['(咱们|我们|笔者)也得(说|讲|交代|点|强调)']
+
+[[rules]]
+id = "banned_pull_apart"
+level = "error"
+check = "existence"
+scope = "reader_visible"
+message = "「掰开」「拆开」是作者确认的 AI 词语。命中即退回，不得批量换成另一个近义修辞；按实际动作改成「分别看」「一个个看」「分成两部分」「按字节看」或「查看展开结果」。"
+patterns = ['掰开', '拆开']
+
+[[rules]]
+id = "banned_semicolon"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "分号一律重写成连贯的句子。句内分割只认逗号和句号，一句一句把话说完。"
+patterns = [';', '；']
+
+[[rules]]
+id = "banned_corner_quotes"
+level = "error"
+check = "existence"
+scope = "reader_visible"
+message = "作者已将中文直角引号的开、闭字符列为 AI 硬禁符号。命中任一字符即退回；不要用引号制造临时概念、标签或私下叫法，直接把对象和关系写清楚。"
+patterns = ['[「」]']
+
+[[rules]]
+id = "clause_without_warmth"
+level = "error"
+check = "clause_warmth"
+scope = "prose"
+message = "逗号与句号切开的每个子句，都要有人称、真实承接或自然语气在场。「呢」不再单独充当过关凭证；命中时优先调整主谓与承接，不得补一个「呢」了事。"
+patterns = ['(?:咱们|我们|大家|大伙|读者|朋友们|孩子们|我|你|您|笔者|其实|的|地|了|虽然说|而|当然|不过|但是|所以|^结果|偏偏|倒是|嘛|吧|哦|欸|啊|呀|啦|吗|么|呗|咯|[?？])']
+
+[[rules]]
+id = "patched_ne_density"
+level = "error"
+check = "occurrence"
+scope = "paragraph"
+message = "同一段出现三个以上「呢」，通常是在拿语气词修补生硬语序。逐句拿掉「呢」再读：需要承接的就重排主谓、拆句或补真实动作；只有确实承担追问、迟疑、对举的才保留。"
+patterns = ['呢']
+limit = 2
+
+[[rules]]
+id = "exclamatory_particle_cap"
+level = "error"
+check = "occurrence"
+scope = "document"
+message = "「啊/呀/啦」是感叹味语气词，作者语料里几乎不用；全篇合计超过三处，判为往冷子句上贴词。修法是让写手改结构、补承接，不是删词压线，也不许换成「呢/嘛/吧」接着贴。"
+patterns = ['[啊呀啦]']
+limit = 3
+
+[[rules]]
+id = "fake_article"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "「这/那+量词」是把英文 the/this 直译进来的假冠词，命中即砍、真指认也重写。让人称或动词打头，量词直接说数量。裸「这个/那个」放行，但必须指着前文真实出现过的东西；无先行词的空指 lint 抓不到，归声音走查拦截。"
+patterns = ['[这那][一二两三四五六七八九十百千]?[面份条只张位台支种款处节站格家]', '[这那][一二两三四五六七八九十百千]个']
+
+[[rules]]
+id = "banned_all_present"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "「一个不少」是作者确认的 AI 词汇。改写成「一个都没有少」。"
+patterns = ['一个不少']
+
+[[rules]]
+id = "compressed_shared_history"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "“逐条见过/讲过”“给过的原话”“说过的话”把共同经历或回指压成无人称注记。回指写成有主体的动作句，如“上一章咱们就强调过……”；审稿报告必须给出改写方向，不能只报命中词。"
+patterns = ['逐条(?:见过|讲过|看过)', '给过的原话', '说过的话', '先前给过的']
+
+[[rules]]
+id = "copy_command_flat"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "“照抄”不属于作者说法。按现场改成“咱们 Ctrl C、Ctrl V”“大胆当一回 CV 工程师”或普通的“复制过来”。"
+patterns = ['照抄']
+
+[[rules]]
+id = "ai_spotlight"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "疑似 AI 替读者宣布重点。不要写“关键/核心/重点在于（是）”；让我们在具体对象前停一下，再进入机制。"
+patterns = ['(?:关键|核心|重点)(?:在于|是)']
+
+[[rules]]
+id = "banned_stare"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "“盯住”是作者确认的 AI 词，命中即退回。可按现场使用“还请您移步到这里”“请把镜头聚焦到……”或直接写要看的对象。"
+patterns = ['盯住']
+
+[[rules]]
+id = "coined_continue_use"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "“续着用”是把普通动作压成自造口语的 AI 说法。改成“因此，我们可以继续使用这个链条中间的中间对象。”一类完整表达。"
+patterns = ['续着用']
+
+[[rules]]
+id = "stock_teacher_phrasing"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "命中了作者否决的讲台式固定说法。必须使用对应的自然停顿与人称改写，声音审稿员还要核对逗号有没有被压掉。"
+patterns = ['咱们真正需要看的是', '您看这里', '我们需要明确', '说白了', '记住', '牢记', '重点看']
+
+[[rules]]
+id = "dramatic_proof"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "疑似用戏剧化收口词替证据下判决。删掉它，直接给输出、源码或机制。"
+patterns = ['钉死', '实锤', '坐实', '铁证', '板上钉钉', '一锤定音']
+
+[[rules]]
+id = "dramatic_verb"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "疑似用力过猛的修辞动词。若它没有增加机制信息，换成普通动词。"
+patterns = ['焊死', '锁死', '焊牢', '焊进', '钉在', '钉住', '钉得']
+
+[[rules]]
+id = "ritual_open"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "疑似仪式性开场。直接进入真实冲突或事实；普通口水话不在这条规则里。"
+patterns = ['先把舞台', '先把话撂', '先把丑话', '光说不练', '闲话少说', '开宗明义', '先把环境摆']
+
+[[rules]]
+id = "jargon_coin"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "疑似为显得有风格而生造的压缩词或比喻。先确认概念已经用普通话讲清楚。"
+patterns = ['新址', '旧址', '逃生门', '命门', '私货', '交付物', '收口', '收笔', '题眼', '文眼', '棋眼', '三步舞', '如期而至', '这一刀', '咬人', '全绿', '不塌', '它绕', '减穿']
+
+[[rules]]
+id = "jargon_biz"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "疑似互联网业务黑话。技术文里直接说明动作、对象和结果。"
+patterns = ['抓手', '赋能', '闭环', '颗粒度', '组合拳', '护城河', '基本盘', '打法', '沉淀(?!物)', '拉齐', '对齐颗粒', '心智图']
+
+[[rules]]
+id = "metaphor_ticket"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "疑似套用式比喻。第一次说明概念时直接说前提、资格或作用。"
+patterns = ['入场券', '通行证', '门票', '免死金牌', '定海神针', '主心骨', '垫脚石', '敲门砖', '护身符']
+
+[[rules]]
+id = "ledger_family"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "「账」是作者确认的 AI 词汇，欠账/认账/记账/账单等组合一律命中。命中即退回；验证、数量和代价直接说具体对象。"
+patterns = ['账']
+
+[[rules]]
+id = "commerce_speak"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "疑似把普通技术动作写成买卖。确实讨论价格时放行，否则直说代价或步骤。"
+patterns = ['不花钱', '免费', '这一笔', '白嫖']
+
+[[rules]]
+id = "ai_filler"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "疑似 AI 高频连接词或空洞强调。命中词删掉以后信息不减，就删；但「但是/不过/反而/因此」这类有真实对比或因果对象的承接词不属于本条范围，需要它们时就用，写手不得为避嫌整句吞掉转折。"
+patterns = ['此外', '值得注意', '值得一提的是', '深入探讨', '综上所述', '总而言之', '不可或缺', '至关重要', '一定程度上', '不得不说']
+
+[[rules]]
+id = "banned_house_terms"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "这是作者反复确认会带来 AI 味的家规词。不要找近义黑话，直接陈述机制。"
+patterns = ['铁律', '讲透']
+
+[[rules]]
+id = "banned_bare_hardware"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "「真机」是作者确认的 AI 词汇，命中即退回。嵌入式场景写「真正的开发板上」，其余场景保持「真正的X上」的结构，把 X 换成实际的硬件或环境。"
+patterns = ['真机']
+
+[[rules]]
+id = "banned_host_machine"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "「宿主机」是作者确认的 AI 词汇，命中即退回，写成「咱们开发它的电脑」。「宿主运行库」一类不含「宿主机」的固定说法不在本条范围。"
+patterns = ['宿主机']
+
+[[rules]]
+id = "dev_slang"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "有普通说法时别压缩成开发黑话。行业专名和确有语境的通行用法可以放行。"
+patterns = ['落盘', '上板', '开包', '手序', '空参']
+
+[[rules]]
+id = "english_filler"
+level = "error"
+check = "existence"
+scope = "prose"
+message = "普通词已有自然中文说法，不必硬塞英文。代码标识符和行业专名不受此限。"
+patterns = ['\b(?:saga|workaround|edge case|case by case|the point is|takeaway)\b']
+
+[[rules]]
+id = "internal_station_number"
+level = "error"
+check = "existence"
+scope = "visible_raw"
+message = "「站 NN」是路线图内部的编号系统,读者没学过:正文的站指代只用「这一站/本站/上一站/下一站」,指代其它站用卷名或内容描述(如「往后 32 位的引导件」),编号一律不进正文。"
+patterns = ['站\s*`?[0-9]']
+
+[[rules]]
+id = "opaque_content_reference"
+level = "error"
+check = "existence"
+scope = "visible_raw"
+message = "「正文 001」「正文 `001`」「正文 001/004」一类编号只有编辑者认得，读者不知道它指什么。改成带内容标题的自然指称；需要跳转时同时给出链接，不能只保留代号。"
+patterns = ['(?:正文|前文|本篇|上一篇|下一篇)\s*(?:\[)?(?:`0[0-9]{2}(?:\s*[/、]\s*0[0-9]{2})*[A-Za-z]?`(?!\s*[·:：—-])|0[0-9]{2}(?:\s*[/、]\s*0[0-9]{2})*[A-Za-z]?(?![A-Za-z0-9`]|\s*[·:：—-]))']
+
+[[rules]]
+id = "banned_spit"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "作者已将“吐”设为硬禁词(2026-09-28 验声点名)。“把数据吐出来/一次只吐一条”一类是 AI 高频腔，数据、清单、结果的给出直接写事实：报出来、报一条、摆出来、交回来、写进。"
+patterns = ['吐']
+
+[[rules]]
+id = "banned_nail"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "作者已将“钉”设为硬禁词,出现即打回,不做语境放行(2026-09-29 验声点名)。钉在/钉住/钉好/钉进/钉牢是枚举规则穿网的词形家族;修法宁用更长的表达——定好/管好/钉好一类完成态统一写“确定下来”,固定进编译期就写“在编译期确定下来”。"
+patterns = ['钉']
+
+[[rules]]
+id = "banned_sprout"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "作者已将「长出/长成」拟人腔设为硬禁词(2026-09-30 站 03 验稿点名)。编号长出来、输出长成了这样是 AI 高频拟人;事物的出现直接写事实:报上来、点齐、是……的样子,或整句重写。"
+patterns = ['长出来', '长成了', '长出']
+
+[[rules]]
+id = "banned_call_out"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "作者已将「点名」设为硬禁词(2026-09-30 站 03 验稿点名)。QEMU 自己点名、被点名一类是 AI 高频腔;主体说了算、认下了、只认它给的,直接写事实。"
+patterns = ['点名']
+
+[[rules]]
+id = "banned_fall_down"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "作者已将「落下来」设为硬禁词(2026-09-30 站 03 验稿点名)。输出落到眼前/给咱们落下来是 AI 高频腔;终端里出现、印出来、是这样几行,直接写事实。"
+patterns = ['落下来', '落了下来', '落到咱们眼前']
+
+[[rules]]
+id = "banned_whole_machine"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "作者已将「整机」设为硬禁词(2026-09-30 站 03 验稿点名)。「从地基到整机」一类是 AI 高频腔;说系统、说这台机器、说从地基到能跑的内核,直接写事实。"
+patterns = ['整机']
