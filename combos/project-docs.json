@@ -1,0 +1,21 @@
+{
+  "lane": "project-docs",
+  "base": "forge-base",
+  "process": ["five-gates", "mechanical"],
+  "review": ["project-docs"],
+  "voice": null,
+  "scene": "project-docs",
+  "roles": [
+    "master",
+    "writer",
+    "voice-walker",
+    "fidelity-walker",
+    "thread-walker",
+    "reference-walker"
+  ],
+  "role_layer_extras": {
+    "voice-walker": ["review"],
+    "fidelity-walker": ["review"],
+    "thread-walker": ["process", "review"]
+  }
+}

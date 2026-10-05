@@ -17,6 +17,7 @@
 
 | 用户意图关键词 | 路由到 | 入口动作 |
 |----------------|--------|----------|
+| 编写项目文档 / 优化 README、安装指南、配置说明或使用教程 / 使用 project-docs 组合 | 项目文档流程 | 主控读 build/project-docs/master.md（combos/project-docs.json 选层），按该组合派发写手与四道走查；默认不选个人声音卡，目标事实与模板从目标项目取得 |
 | 「请按照 content-forge 优化文章」/ 使用 content_forge 改写 / 润色任意 Markdown / 单篇走查 | 通用单篇流程 | 主控读 build/single-editorial/master.md（combos/single-editorial.json 选层，workchop bake 生成），目标取显式路径或 IDE 活动 Markdown，再自动发现项目约束并按包派发写手与四道走查 |
 | 体检 / 环境 / 装环境 / 坏了 / 换电脑 | 平台 | `workchop doctor` |
 
