@@ -417,3 +417,11 @@ check = "existence"
 scope = "visible"
 message = "作者已将「整机」设为硬禁词(2026-09-30 站 03 验稿点名)。「从地基到整机」一类是 AI 高频腔;说系统、说这台机器、说从地基到能跑的内核,直接写事实。"
 patterns = ['整机']
+
+[[rules]]
+id = "banned_full_mechanism"
+level = "error"
+check = "existence"
+scope = "visible"
+message = "作者已将「完整机制」压缩语设为硬禁词(2026-10-05 定调)。形容词直接压双字名词少了个「的」,读着发紧;写「完整的机制」「完整的机制链」,带上的字再读一遍。"
+patterns = ['完整机制']
